@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">shopping_app</string>
+    <string-array name="shopping_items">
+        <item>Knee Pads</item>
+        <item>Helmet</item>
+        <item>Pants</item>
+        <item>Bicycles</item>
+        <item>Bottles</item>
+        <item>Shirts</item>
+        <item>Nikes</item>
+    </string-array>
+    <string-array name="description">
+        <item>Knee Pads description</item>
+        <item>Helmet description</item>
+        <item>Pants description</item>
+        <item>Bicycles description</item>
+        <item>Bottles description</item>
+        <item>Shirts description</item>
+        <item>Nikes description</item>
+    </string-array>
+</resources>
