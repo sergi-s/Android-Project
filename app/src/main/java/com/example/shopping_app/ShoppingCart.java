@@ -18,12 +18,15 @@ public class ShoppingCart extends AppCompatActivity {
         Intent intent = getIntent();
         List<Item> order = (List<Item>) intent.getSerializableExtra("List");
 
+//        for (int i = 0; i < order.size(); i++) {
+//            Log.d("Ordred", String.valueOf(order.get(0)));
+//        }
 
         double sum = 0;
         for (int i = 0; i < order.size(); i++) {
             String str = order.get(i).Price;
             StringBuilder sb = new StringBuilder(str);
-            sum += Integer.parseInt(sb.deleteCharAt(str.length() - 1).toString());
+            sum += Double.parseDouble(sb.deleteCharAt(str.length() - 1).toString());
         }
 
         Log.d("Total Price", String.valueOf(sum));
