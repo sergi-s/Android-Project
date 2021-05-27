@@ -59,6 +59,28 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 toast.show();
             }
         });
+
+        holder.btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean deleted = false;
+                for (int i = 0; i < Orderd.size(); i++) {
+                    if (Orderd.get(i).image == list.get(position).image) {
+                        Orderd.remove(i);
+                        deleted = true;
+                    }
+                }
+                Toast toast;
+                if (deleted) {
+                    toast = Toast.makeText(context.getApplicationContext(), "Deleted" + position, Toast.LENGTH_SHORT);
+                } else {
+                    toast = Toast.makeText(context.getApplicationContext(), "Cant Delete" + position, Toast.LENGTH_SHORT);
+                }
+                toast.setMargin(50, 50);
+                toast.show();
+                deleted = false;
+            }
+        });
     }
 
     @Override
@@ -69,7 +91,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text1, text2, text3;
         ImageView img;
-        Button btn;
+        Button btn, btn2;
 
         ConstraintLayout mainLayout;
 
@@ -80,6 +102,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             text3 = itemView.findViewById(R.id.Item_price);
             img = itemView.findViewById(R.id.Item_image);
             btn = itemView.findViewById(R.id.Item_add);
+            btn2 = itemView.findViewById(R.id.Item_remove);
 //            mainLayout = itemView.findViewById(R.id.mainlLayout);
 
         }

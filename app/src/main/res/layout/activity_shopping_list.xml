@@ -15,9 +15,9 @@
 
     <Button
         android:id="@+id/toShoppingCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Shopping Cart"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/shopping_cart2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

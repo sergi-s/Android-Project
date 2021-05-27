@@ -51,10 +51,14 @@ public class ShoppingList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<Item> order = myAdapter.getOrderd();
-                for (int i = 0; i < order.size(); i++) {
-                    Log.d("Testoreder", String.valueOf((order.get(i))));
-                }
-//                Intent i = new Intent(ShoppingList.this, ShoppingCart.class);
+//                for (int i = 0; i < order.size(); i++) {
+//                    Log.d("Testoreder", String.valueOf((order.get(i))));
+//                }
+                Intent i = new Intent(ShoppingList.this, ShoppingCart.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("data", (Parcelable) order);
+                i.putExtra("List", (Serializable) order);
+                startActivity(i);
 //                i.putExtra("order", (Serializable) order);
 //                startActivity(i);
 //                finish();

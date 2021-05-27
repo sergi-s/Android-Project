@@ -52,15 +52,14 @@
 
             <Button
                 android:id="@+id/Item_add"
-                android:layout_width="91dp"
-                android:layout_height="38dp"
-                android:text="Add"
+                android:layout_width="45dp"
+                android:layout_height="42dp"
+                android:text="+"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.903"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.645" />
+                app:layout_constraintHorizontal_bias="0.529"
+                app:layout_constraintStart_toEndOf="@+id/Item_remove"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/Item_price"
@@ -70,6 +69,16 @@
                 android:text="Price"
                 app:layout_constraintStart_toStartOf="@+id/Item_descp"
                 app:layout_constraintTop_toBottomOf="@+id/Item_descp" />
+
+            <Button
+                android:id="@+id/Item_remove"
+                android:layout_width="45dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="268dp"
+                android:text="-"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/Item_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

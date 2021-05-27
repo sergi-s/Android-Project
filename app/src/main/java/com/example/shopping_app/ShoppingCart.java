@@ -2,6 +2,7 @@ package com.example.shopping_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,11 +15,17 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        Bundle bundle = getIntent().getExtras();
-        List<Item> order = (List<Item>) getIntent().getExtras().getSerializable("list");
+        Intent intent = getIntent();
+        List<Item> order = (List<Item>) intent.getSerializableExtra("List");
 
+
+        double sum = 0;
         for (int i = 0; i < order.size(); i++) {
-            Log.d("Testoreder", bundle.getParcelable(String.valueOf(order.get(i))));
+            String str = order.get(i).Price;
+            StringBuilder sb = new StringBuilder(str);
+            sum += Integer.parseInt(sb.deleteCharAt(str.length() - 1).toString());
         }
+
+        Log.d("Total Price", String.valueOf(sum));
     }
 }
