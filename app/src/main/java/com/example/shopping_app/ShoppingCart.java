@@ -1,10 +1,18 @@
 package com.example.shopping_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +35,12 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My notification", "My notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         Intent intent = getIntent();
         order = (List<Item>) intent.getSerializableExtra("List");
         btn = findViewById(R.id.button);
@@ -45,24 +59,27 @@ public class ShoppingCart extends AppCompatActivity {
         }
 
         totalprice = (TextView) findViewById(R.id.totalprice);
-        totalprice.setText( "Total Price "+String.valueOf(sum));
+        totalprice.setText("Total Price " + String.valueOf(sum));
+
+        Mynotify(String.valueOf(sum));
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("total", sum);
-
-                intent.setAction("com.example.shopping_app.CUSTOM_INTENT");
-                sendBroadcast(intent);
-
 
             }
         });
     }
 
-    public void broadcastIntent(View view) {
+    public void Mynotify(String s) {
 
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "My notification");
+        builder.setContentTitle("Order In your way");
+        builder.setContentText("Your Total is " + s + "\tThanks for using our app");
+        builder.setSmallIcon(R.drawable.shopping_cart);
+        builder.setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getApplicationContext());
+        managerCompat.notify(1, builder.build());
     }
-
 }
