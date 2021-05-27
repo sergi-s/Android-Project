@@ -18,4 +18,5 @@
         <item>Shirts description</item>
         <item>Nikes description</item>
     </string-array>
+    <string name="share_text_with">Share this text with:</string>
 </resources>

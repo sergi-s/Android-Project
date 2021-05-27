@@ -3,10 +3,10 @@ package com.example.shopping_app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.ShareCompat;
+import androidx.core.app.ShareCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,9 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart extends AppCompatActivity {
@@ -63,12 +61,23 @@ public class ShoppingCart extends AppCompatActivity {
 
         Mynotify(String.valueOf(sum));
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+    }
+    public void shareText(View view) {
+
+        String txt ="";
+        for (int i=0;i<order.size();i++){
+            txt+=order.get(i).toString();
+        }
+        txt+=" Total Price " + String.valueOf(sum);
+        String mimeType = "text/plain";
+        ShareCompat.IntentBuilder
+                .from(this)
+                .setType(mimeType)
+                .setChooserTitle("R.string.share_text_with")
+                .setText(txt)
+                .startChooser();
+        Log.d("sssss","ssssssss");
     }
 
     public void Mynotify(String s) {
