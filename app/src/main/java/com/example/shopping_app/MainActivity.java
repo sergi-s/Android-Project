@@ -3,12 +3,17 @@ package com.example.shopping_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import static java.lang.Thread.*;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Boolean isLoggedIn = !(loadData()).equals("");
 
-                //TODO use shared preferences to find if loggedin or not
-                Boolean isLoggedIn = true;
                 if (isLoggedIn) {
                     Intent i = new Intent(MainActivity.this, ShoppingList.class);
                     startActivity(i);
@@ -34,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        },2000);
+        }, 2000);
 
 
+    }
 
+    public String loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        String usname = sharedPreferences.getString(USERNAME, "");
+        return usname;
     }
 }
