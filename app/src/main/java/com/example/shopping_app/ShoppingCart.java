@@ -1,6 +1,8 @@
 package com.example.shopping_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart extends AppCompatActivity {
-
+    RecyclerView recycleView;
+    List<Item> list = new ArrayList<Item>();
+    int images[] = {R.drawable.knee_pads, R.drawable.helmet, R.drawable.pants, R.drawable.bicycles, R.drawable.bottles, R.drawable.shirts, R.drawable.nikes};
     List<Item> order;
     double sum = 0;
     Button btn;
@@ -21,9 +26,16 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        btn=findViewById(R.id.button);
         Intent intent = getIntent();
         order = (List<Item>) intent.getSerializableExtra("List");
+        btn=findViewById(R.id.button);
+        recycleView=findViewById(R.id.shoppingCartView);
+
+        RecycleViewAdapterCart myAdapter = new RecycleViewAdapterCart(this, order);
+
+        recycleView.setAdapter(myAdapter);
+        recycleView.setLayoutManager(new LinearLayoutManager(this));
+
 
 //        for (int i = 0; i < order.size(); i++) {
 //            Log.d("Ordred", String.valueOf(order.get(0)));
