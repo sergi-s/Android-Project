@@ -23,6 +23,7 @@ public class ShoppingList extends AppCompatActivity {
 
     List<Item> list = new ArrayList<Item>();
     String str1[], str2[];
+    String str3[]={"50$","60$","70$","80$","100$","80$","95$"};
     int images[] = {R.drawable.knee_pads, R.drawable.helmet, R.drawable.pants, R.drawable.bicycles, R.drawable.bottles, R.drawable.shirts, R.drawable.nikes};
 
 
@@ -37,7 +38,7 @@ public class ShoppingList extends AppCompatActivity {
         str2 = getResources().getStringArray(R.array.description);
 
         for (int i = 0; i < str1.length; i++) {
-            list.add(new Item(str1[i], str2[i], "50$", images[i]));
+            list.add(new Item(str1[i], str2[i], str3[i], images[i]));
         }
 
         RecycleViewAdapter myAdapter = new RecycleViewAdapter(this, list);
