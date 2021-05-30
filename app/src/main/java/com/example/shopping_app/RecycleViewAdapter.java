@@ -1,7 +1,6 @@
 package com.example.shopping_app;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.solver.state.State;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -38,7 +35,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.my_row, parent, false);
-
         return new MyViewHolder(view);
     }
 
@@ -93,8 +89,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         ImageView img;
         Button btn, btn2;
 
-        ConstraintLayout mainLayout;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text1 = itemView.findViewById(R.id.Item_name);
@@ -103,8 +97,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             img = itemView.findViewById(R.id.Item_image);
             btn = itemView.findViewById(R.id.Item_add);
             btn2 = itemView.findViewById(R.id.Item_remove);
-//            mainLayout = itemView.findViewById(R.id.mainlLayout);
-
         }
     }
 }

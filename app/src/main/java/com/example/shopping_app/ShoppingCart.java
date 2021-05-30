@@ -77,7 +77,6 @@ public class ShoppingCart extends AppCompatActivity {
                 .setChooserTitle("R.string.share_text_with")
                 .setText(txt)
                 .startChooser();
-        Log.d("sssss","ssssssss");
     }
 
     public void Mynotify(String s) {

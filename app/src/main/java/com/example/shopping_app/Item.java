@@ -17,31 +17,7 @@ public class Item implements Serializable {
     }
 
     public String toString() {
-        return "Name: '" + this.Name + "', Description: '" + this.Description + "', Price: '" + this.Price + "'";
+        return "Name: '" + this.Name + "', Description: '" + this.Description + "', Price: '" + this.Price + "'\n";
 //        return this.Name + " " + this.Description + " " + this.Price;
     }
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Name);
-        dest.writeString(Description);
-        dest.writeString(Price);
-        dest.writeInt(image);
-
-    }
-    public Item(Parcel in) {
-        Name = in.readString();
-        Description = in.readString();
-        Price = in.readString();
-        image = in.readInt();
-    }
-
-    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
-        public Item createFromParcel(Parcel in) {
-            return new Item(in);
-        }
-
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
 }
