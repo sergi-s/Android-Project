@@ -24,7 +24,7 @@ public class registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
+        getSupportActionBar().setTitle("Habdology");
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);

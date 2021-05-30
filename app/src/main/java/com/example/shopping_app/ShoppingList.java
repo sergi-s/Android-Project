@@ -1,15 +1,13 @@
 package com.example.shopping_app;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class ShoppingList extends AppCompatActivity {
 
     List<Item> list = new ArrayList<Item>();
     String str1[], str2[];
-    String str3[]={"50$","60$","70$","80$","100$","80$","95$"};
+    String str3[] = {"50$", "60$", "70$", "80$", "100$", "80$", "95$"};
     int images[] = {R.drawable.knee_pads, R.drawable.helmet, R.drawable.pants, R.drawable.bicycles, R.drawable.bottles, R.drawable.shirts, R.drawable.nikes};
 
 
@@ -33,7 +31,7 @@ public class ShoppingList extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
 
         recycleView = findViewById(R.id.recycleView);
-
+        getSupportActionBar().setTitle("Habdology");
         str1 = getResources().getStringArray(R.array.shopping_items);
         str2 = getResources().getStringArray(R.array.description);
 
